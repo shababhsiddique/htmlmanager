@@ -32,7 +32,7 @@ class Dashboard extends CI_Controller {
 
 
     public function index(){
-        echo ":hi";
+        $this->load->view('admin/dash');
     }
     /**
      * Log out and Remove Session values

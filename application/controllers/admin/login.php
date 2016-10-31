@@ -56,7 +56,7 @@ class Login extends CI_Controller {
 
 
 
-            $sessionData = setmessage("Welcome", "You have successfully logged in as admin ", "success");
+            $sessionData = setmessage("Welcome", 'You have successfully logged in as admin ', "success");
             $sessionData['admin_name'] = $result['admin_name'];
             $sessionData['admin_user_name'] = $username;
             $sessionData['admin_user_id'] = $result['admin_id'];
