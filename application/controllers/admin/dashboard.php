@@ -3,8 +3,6 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-
-
 /**
  * Description of dashboard
  *
@@ -16,8 +14,6 @@ class Dashboard extends CI_Controller {
      * Constructor
      * @author Shabab Haider Siddique
      */
-
-
     public function __construct() {
         parent::__construct();
 
@@ -25,15 +21,18 @@ class Dashboard extends CI_Controller {
         $admin_logged_in = $this->session->userdata('admin_logged_in');
         if (!isset($admin_logged_in) || $admin_logged_in == false) {
             redirect('admin/login');
-        } 
-
-      
+        }
     }
 
-
-    public function index(){
+    public function index() {
         $this->load->view('admin/dash');
     }
+
+    public function ajaxWysiwygHandler() {
+
+        
+    }
+
     /**
      * Log out and Remove Session values
      * @author Shabab Haider Siddique
