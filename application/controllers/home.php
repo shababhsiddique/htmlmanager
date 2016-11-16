@@ -21,8 +21,8 @@ class Home extends CI_Controller {
      */
     public function __construct() {
         parent::__construct();
-        
-        $this->load->model("content_model","content");
+
+        $this->load->model("content_model", "content");
 
 //        // Check whether admin is logged in
 //        $admin_logged_in = $this->session->userdata('admin_logged_in');
@@ -33,7 +33,55 @@ class Home extends CI_Controller {
 
     public function index() {
 
-        $this->load->view('welcome_message');
+//         $string = file_get_contents("./site/index.html");
+//        
+//        echo $string;
+
+        $this->view("index");
+    }
+
+    public function view($u1, $u2 = "", $u3 = "", $u4 = "") {
+
+
+        $string = file_get_contents("./site/$u1.html");
+
+
+        $admin_logged_in = $this->session->userdata('admin_logged_in');
+
+        /**
+         * WYSYWYG Wrapper 
+         */
+        if ($admin_logged_in == FALSE) {
+
+            echo $string;
+        } else {
+            $html = str_get_html($string);
+
+
+            // $html->find('body', 0)->innertext ="blah blah blah bli bli bli";
+
+            $oldhtmlbody = $html->find('body', 0)->innertext;
+
+            $scrpt = '<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js" ></script>';
+            $scrpt .= $this->load->view("admin/wysiwyg/nicinit", array(), true);
+            $scrpt .= $this->load->view("admin/wysiwyg/nicpanel", array(), true);
+
+
+            $scrpt .= "<div data-vw1='$u1' id='hmsbdy'>$oldhtmlbody</div>";
+
+
+            $scrpt.= "<script type='text/javascript'>
+                            //<![CDATA[
+                           bkLib.onDomLoaded(function() {
+                               myNicEditor.addInstance('hmsbdy');
+                           });
+                           //]]>
+                       </script>";
+
+            $html->find('body', 0)->innertext = $scrpt;
+            
+            echo $html;
+        }
     }
 
 }

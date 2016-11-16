@@ -55,4 +55,15 @@ $route['translate_uri_dashes'] = FALSE;
 
 
 $route['admin'] = 'admin/dashboard';
+$route['admin/login'] = 'admin/login';
+$route['admin/login/authenticate'] = 'admin/login/authenticate';
+$route['admin/dashboard'] = 'admin/dashboard';
 $route['admin/logout'] = 'admin/dashboard/logout';
+
+$route['(:any)'] = 'home/view/$1';
+$route['(:any)/(:any)'] = 'home/view/$1/$2';
+$route['(:any)/(:any)/(:any)'] = 'home/view/$1/$2/$3';
+$route['(:any)/(:any)/(:any)/(:any)'] = 'home/view/$1/$2/$3/$4';
+
+
+
