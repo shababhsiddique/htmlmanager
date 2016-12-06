@@ -31,6 +31,7 @@ if ($admin_logged_in == true) {
                     fullPanel: true,
                     onSave: function(content, id, instance) {
                         
+                        var vw1 = $("#"+id).data("vw1");
                         /*var table = $("#"+id).data("tbl");
                         var primary_key = $("#"+id).data("pk");
                         var update_column = $("#"+id).data("dc");
@@ -40,10 +41,7 @@ if ($admin_logged_in == true) {
                             type: 'POST',
                             url: "<?php echo site_url('admin/dashboard/ajaxWysiwygHandler') ?>",
                             data: {
-                                id: content_id,
-                                table: table,
-                                primary_key: primary_key,
-                                update_column: update_column,
+                                vw1: vw1,
                                 update: content
                             },
                             beforeSend: function() {

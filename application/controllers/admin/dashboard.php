@@ -25,11 +25,27 @@ class Dashboard extends CI_Controller {
     }
 
     public function index() {
-        $this->load->view('admin/dash');
+        $url = $this->input->get("editurl");
+        $this->load->view('admin/dash',array("url"=>$url));
     }
+    
+    
 
     public function ajaxWysiwygHandler() {
 
+        $vw1 = $this->input->post("vw1");
+        $content = $this->input->post('update');
+        
+        
+
+        $string = file_get_contents("./site/$vw1.html");
+        $html = str_get_html($string);
+
+
+        $html->find('body', 0)->innertext = $content;
+        
+        $html = str_replace("> ", ">\r\n", $html);
+        file_put_contents("./site/$vw1.html", $html);
         
     }
 

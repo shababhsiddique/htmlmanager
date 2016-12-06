@@ -15,11 +15,48 @@
         <script src="<?php echo base_url() ?>resources/admin/js/materialize.js"></script>
     </head>
     <body>
+        <ul id="sitepagesselector" class="dropdown-content">
+            <?php
+            $files = scandir("./site/");
+            
+            unset($files[0]);
+            unset($files[1]);
+            
+            
+            foreach($files as $aFile){
+                $aFile = str_replace(".html","",$aFile);
+                $aFile = str_replace(".htm","",$aFile);
+                echo "<li><a href='?editurl=$aFile'>$aFile</a></li>";
+            }
+            ?>
+<!--            <li><a href="#!">one</a></li>
+            <li><a href="#!">two</a></li>
+            <li class="divider"></li>
+            <li><a href="#!">three</a></li>-->
+        </ul>
+
         <nav class="blue-grey darken-4" role="navigation">
             <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Logo</a>
                 <ul class="right hide-on-med-and-down">
+                    <li><a>Edit Mode</a></li>
+                    <li>
+                        <div class="switch">
+                            <label>
+                                Off
+                                <input type="checkbox" checked="">
+                                <span class="lever"></span>
+                                On
+                            </label>
+                        </div>
+                    </li>
+                    
+                    
+                    <li><a class="dropdown-button" href="#!" data-activates="sitepagesselector">Select Page<i class="material-icons right">arrow_drop_down</i></a></li>
+
                     <li><a href="<?php echo site_url("admin/logout") ?>">Logout</a></li>
                 </ul>
+                
+                
 
                 <ul id="nav-mobile" class="side-nav ">
                     <li><a href="#">Navbar Link</a></li>
@@ -27,11 +64,12 @@
                 <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
             </div>
         </nav>
-
+        
+    
 
 
         <?php
-        $message = $this->session->userdata('message');
+        $message = $this->session->userdata("message");
         if ((isset($message)
                 && $message['title'] != "")) {
             ?>
@@ -48,7 +86,14 @@
         ?>  
         <div class="row" style="margin-left: 0px; margin-right: 0px;">   
 
-            <?php $url = base_url(); ?>
+            <?php 
+            
+            if(isset($url)){
+                $url = site_url($url);
+            }else{
+                $url = base_url(); 
+            }       ?>    
+            
             <div class="col s12">
                 <div id="iframe_wrapper_div" class="responsive-iframe-container">          
                     <iframe id="iframe_live"

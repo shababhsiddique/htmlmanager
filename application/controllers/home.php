@@ -39,9 +39,13 @@ class Home extends CI_Controller {
 
         $this->view("index");
     }
+    
+    
+    
 
     public function view($u1, $u2 = "", $u3 = "", $u4 = "") {
 
+        $nceadminmode = $this->input->get("nceadminmode");
 
         $string = file_get_contents("./site/$u1.html");
 
@@ -51,7 +55,7 @@ class Home extends CI_Controller {
         /**
          * WYSYWYG Wrapper 
          */
-        if ($admin_logged_in == FALSE) {
+        if ($admin_logged_in == FALSE || $nceadminmode == "f") {
 
             echo $string;
         } else {
@@ -62,7 +66,7 @@ class Home extends CI_Controller {
 
             $oldhtmlbody = $html->find('body', 0)->innertext;
 
-            $scrpt = '<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js" ></script>';
+            $scrpt = '<script class="hmsadmin" type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js" ></script>';
             $scrpt .= $this->load->view("admin/wysiwyg/nicinit", array(), true);
             $scrpt .= $this->load->view("admin/wysiwyg/nicpanel", array(), true);
 
@@ -70,13 +74,15 @@ class Home extends CI_Controller {
             $scrpt .= "<div data-vw1='$u1' id='hmsbdy'>$oldhtmlbody</div>";
 
 
-            $scrpt.= "<script type='text/javascript'>
+            $scrpt.= "<script class='hmsadmin' type='text/javascript'>
                             //<![CDATA[
                            bkLib.onDomLoaded(function() {
                                myNicEditor.addInstance('hmsbdy');
                            });
                            //]]>
                        </script>";
+            
+            
 
             $html->find('body', 0)->innertext = $scrpt;
             
