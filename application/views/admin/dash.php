@@ -24,6 +24,7 @@
             
             
             foreach($files as $aFile){
+                
                 $aFile = str_replace(".html","",$aFile);
                 $aFile = str_replace(".htm","",$aFile);
                 echo "<li><a href='?editurl=$aFile'>$aFile</a></li>";
@@ -84,7 +85,7 @@
             //$this->session->unset_userdata('message');
         }
         ?>  
-        <div class="row" style="margin-left: 0px; margin-right: 0px;">   
+        <div class="row" style="margin-left: 0px; margin-right: 0px; margin-bottom: 0px;">   
 
             <?php 
             
@@ -111,22 +112,6 @@
         </div>
 
 
-
-        <footer class="page-footer brown darken-2">
-            <div class="container">
-                <div class="row">
-                    <div class="col s12">
-                        <h5 class="white-text">Company Bio</h5>
-                        <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-copyright">
-                <div class="container">
-                    Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
-                </div>
-            </div>
-        </footer>
 
         <script src="<?php echo base_url() ?>resources/admin/js/init.js"></script>
     </body>

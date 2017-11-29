@@ -48,6 +48,33 @@ class Dashboard extends CI_Controller {
         file_put_contents("./site/$vw1.html", $html);
         
     }
+    
+    
+    public function fixcss($vw1){
+        
+        $string = file_get_contents("./site/$vw1.html");
+        
+        $string = str_replace('href="', 'href="'.base_url().'site/', $string);
+        
+        $string = str_replace('href="'.base_url().'site/'.base_url().'site/', 'href="'.base_url().'site/', $string);
+        
+        
+        $string = str_replace('src="', 'src="'.base_url().'site/', $string);
+        
+        $string = str_replace('src="'.base_url().'site/'.base_url().'site/', 'src="'.base_url().'site/', $string);
+        
+        
+        $string = str_replace('href="'.base_url().'site/#', 'href="#', $string);
+        echo "replace ". 'href="'.base_url().'site/#'. 'with '. 'href="#';
+        
+        $string = str_replace(base_url().'site/http', 'http', $string);
+        
+        
+        
+        
+        
+        file_put_contents("./site/$vw1.html", $string);
+    }
 
     /**
      * Log out and Remove Session values

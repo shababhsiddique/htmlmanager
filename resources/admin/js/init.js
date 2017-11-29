@@ -10,7 +10,7 @@ $(function() {
     $(window).bind("load resize", function() {
         width = (this.window.innerWidth > 0) ? this.window.innerWidth : this.screen.width;
 
-        $("#iframe_live").css("min-height", window.innerHeight - 100);
+        $("#iframe_live").css("min-height", window.innerHeight - 70);
     });
     
 

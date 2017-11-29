@@ -61,6 +61,10 @@ $route['admin/dashboard'] = 'admin/dashboard';
 $route['admin/logout'] = 'admin/dashboard/logout';
 $route['admin/dashboard/ajaxWysiwygHandler'] = 'admin/dashboard/ajaxWysiwygHandler';
 
+$route['admin/dashboard/fixcss/(:any)'] = 'admin/dashboard/fixcss/$1';
+
+
+
 
 
 $route['(:any)'] = 'home/view/$1';
