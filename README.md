@@ -1,5 +1,11 @@
-# htmlmanager
+# HMS
 
+HTML management system is a HTML driven CMS. Best suited for single page websites, providing simplicity and WYSIWYG control of your website contents. 
+
+* No need to master complex cms admin tools.
+* Change website text / menu and everything from the site itself.
+* Provide your website HTML template inside the "site" folder. The system will turn it into a dynamic website.
+* work in progress
 
 
 =========

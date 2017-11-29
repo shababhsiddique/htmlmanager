@@ -37,7 +37,7 @@
         </ul>
 
         <nav class="blue-grey darken-4" role="navigation">
-            <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Logo</a>
+            <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">HMS</a>
                 <ul class="right hide-on-med-and-down">
                     <li><a>Edit Mode</a></li>
                     <li>
@@ -52,7 +52,7 @@
                     </li>
                     
                     
-                    <li><a class="dropdown-button" href="#!" data-activates="sitepagesselector">Select Page<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <!--<li><a class="dropdown-button" href="#!" data-activates="sitepagesselector">Select Page<i class="material-icons right">arrow_drop_down</i></a></li>-->
 
                     <li><a href="<?php echo site_url("admin/logout") ?>">Logout</a></li>
                 </ul>
